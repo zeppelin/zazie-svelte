@@ -15,7 +15,7 @@
   nav {
     @apply flex flex-wrap items-center gap-5 pl-3 pr-6;
     @apply fixed top-4 right-0;
-    @apply bg-pink-500;
+    @apply bg-zazie-pink;
   }
 
   .active {

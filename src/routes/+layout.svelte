@@ -5,8 +5,8 @@
 
 <style>
   :global(body) {
-    /* @apply bg-pink-500; */
-    @apply bg-green-800;
+    /* @apply bg-zazie-pink; */
+    @apply bg-zazie-green;
   }
 </style>
 
