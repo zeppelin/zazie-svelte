@@ -18,6 +18,16 @@ const config = ({
       key: 'common',
       loader: async () => (await import('./hu.json')).default,
     },
+    {
+      locale: 'en',
+      key: 'index',
+      loader: async () => (await import('./index.en.json')).default,
+    },
+    {
+      locale: 'hu',
+      key: 'index',
+      loader: async () => (await import('./index.hu.json')).default,
+    },
   ],
 });
 

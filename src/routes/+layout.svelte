@@ -1,6 +1,6 @@
 <script>
   import './styles.css';
-  import Nav from './Nav.svelte';
+  import Nav from '$lib/components/Nav.svelte';
 </script>
 
 <style>
