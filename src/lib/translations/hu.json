@@ -1,0 +1,11 @@
+{
+  "nav":{
+    "home":"nyitólap",
+    "about":"rólunk",
+    "books":"könyvek",
+    "faq":"faq",
+    "blog":"blog",
+    "contact":"kapcsolat",
+    "shop":"online shop"
+  }
+}

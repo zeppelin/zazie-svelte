@@ -1,44 +1,48 @@
-<script>
+<script lang="ts">
+  import { t, locale, setLocale } from '$lib/translations';
+
+  const languages = [
+    { locale: 'en', name: 'EN' },
+    { locale: 'hu', name: 'HU' }
+  ];
+
+  $: currentLocale = locale.get();
+
   import facebook from '$lib/images/facebook.svg';
   import instagram from '$lib/images/instagram.svg';
-
-  let isEN = true;
-  let isHU = false;
-  let shouldShowCartMenu = false;
-  let cartItemCount = 0;
 </script>
 
 <nav class="nav-card">
   <ul class="nav-card__main-menu">
-    <li class="{isEN && 'active'} nav-card__nav-item">
-      <a class="nav-card__text-link" href="#">EN</a>
-    </li>
-
-    <li class="{isHU && 'active'} nav-card__nav-item">
-      <a class="nav-card__text-link" href="#">HU</a>
-    </li>
+    {#each languages as lang}
+      <li class="{currentLocale === lang.locale && 'active'} nav-card__nav-item">
+        <button class="nav-card__text-link" on:click={() => setLocale(lang.locale)}>
+          {lang.name}
+        </button>
+      </li>
+    {/each}
 
     <li class="nav-card__nav-item">
       <a href="/" class="nav-card__text-link">
-        t "nav.home"
+        {$t('common.nav.home')}
       </a>
     </li>
 
     <li class="nav-card__nav-item">
-      <a href="#books" class="nav-card__text-link">
-        t "nav.books"
+      <a href="/#books" class="nav-card__text-link">
+        {$t('common.nav.books')}
       </a>
     </li>
 
     <li class="nav-card__nav-item">
       <a href="/about" class="nav-card__text-link">
-        t "nav.about"
+        {$t('common.nav.about')}
       </a>
     </li>
 
     <li class="nav-card__nav-item">
       <a href="/faq" class="nav-card__text-link">
-        t "nav.faq"
+        {$t('common.nav.faq')}
       </a>
     </li>
   </ul>
@@ -55,14 +59,4 @@
       </a>
     </li>
   </ul>
-
-  {#if shouldShowCartMenu}
-    <ul class="nav-card__shop-menu">
-      <li>
-        <a class="nav-card__shop-link" href="#">
-          t "cart.cart" ({cartItemCount})
-        </a>
-      </li>
-    </ul>
-  {/if}
 </nav>

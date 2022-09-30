@@ -1,0 +1,11 @@
+{
+  "nav":{
+    "home":"home",
+    "about":"about",
+    "books":"books",
+    "faq":"faq",
+    "blog":"blog",
+    "contact":"contact",
+    "shop":"online shop"
+  }
+}
