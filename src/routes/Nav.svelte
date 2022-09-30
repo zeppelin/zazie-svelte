@@ -1,61 +1,72 @@
 <script lang="ts">
   import { t, locale, setLocale } from '$lib/translations';
+  import NavItem from './Nav/Item.svelte';
+
+  import facebook from '$lib/images/facebook.svg';
+  import instagram from '$lib/images/instagram.svg';
 
   const languages = [
     { locale: 'en', name: 'EN' },
     { locale: 'hu', name: 'HU' }
   ];
-
-  $: currentLocale = locale.get();
-
-  import facebook from '$lib/images/facebook.svg';
-  import instagram from '$lib/images/instagram.svg';
 </script>
 
-<nav class="nav-card">
-  <ul class="nav-card__main-menu">
+<style>
+  nav {
+    @apply flex flex-wrap items-center gap-5 pl-3 pr-6;
+    @apply fixed top-4 right-0;
+    @apply bg-pink-500;
+  }
+
+  .active {
+    @apply border-b border-black;
+  }
+</style>
+
+<nav>
+  <ul class="flex gap-8">
     {#each languages as lang}
-      <li class="{currentLocale === lang.locale && 'active'} nav-card__nav-item">
-        <button class="nav-card__text-link" on:click={() => setLocale(lang.locale)}>
+      <li class="{$locale === lang.locale ? 'active' : null}">
+        <button on:click={() => setLocale(lang.locale)}>
           {lang.name}
         </button>
       </li>
     {/each}
 
-    <li class="nav-card__nav-item">
-      <a href="/" class="nav-card__text-link">
+    <NavItem href="/" let:href={href}>
+      <a href={href}>
         {$t('common.nav.home')}
       </a>
-    </li>
+    </NavItem>
 
-    <li class="nav-card__nav-item">
-      <a href="/#books" class="nav-card__text-link">
+    <NavItem href="/#books" let:href={href}>
+      <a href={href}>
         {$t('common.nav.books')}
       </a>
-    </li>
+    </NavItem>
 
-    <li class="nav-card__nav-item">
-      <a href="/about" class="nav-card__text-link">
+    <NavItem href="/about" let:href={href}>
+      <a href={href}>
         {$t('common.nav.about')}
       </a>
-    </li>
+    </NavItem>
 
-    <li class="nav-card__nav-item">
-      <a href="/faq" class="nav-card__text-link">
+    <NavItem href="/faq" let:href={href}>
+      <a href={href}>
         {$t('common.nav.faq')}
       </a>
-    </li>
+    </NavItem>
   </ul>
 
-  <ul class="nav-card__extra-menu">
+  <ul class="flex gap-5 ml-8">
     <li>
-      <a class="nav-card__icon-link" href="https://www.facebook.com/zazievilaga/" target="_blank">
-        <img src={facebook} alt="Facebook">
+      <a href="https://www.facebook.com/zazievilaga/" target="_blank">
+        <img class="h-4" src={facebook} alt="Facebook">
       </a>
     </li>
     <li>
-      <a class="nav-card__icon-link" href="https://www.instagram.com/zaziegram/" target="_blank">
-        <img src={instagram} alt="Instagram">
+      <a href="https://www.instagram.com/zaziegram/" target="_blank">
+        <img class="h-4" src={instagram} alt="Instagram">
       </a>
     </li>
   </ul>
